@@ -9,4 +9,4 @@ class Planilha(models.Model):
     data = models.DateField()
     nome_pessoa = models.CharField(max_length=150)
     tel_pessoa = models.CharField(max_length=50, null=True, blank=True)
-    sexo = models.CharField(15, null=True, blank=True)
+    sexo = models.CharField(max_length=15, null=True, blank=True)
