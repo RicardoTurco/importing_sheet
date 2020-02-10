@@ -1,4 +1,6 @@
+from django.http import HttpResponse
 from django.shortcuts import render
+from django.template import loader
 
 import xlrd
 from .models import Planilha
@@ -10,7 +12,6 @@ def index(request):
 
 
 def importar(request):
-
     if (request.method == 'POST') and (request.FILES):
         form = UpdateDetailsForm(request.POST, request.FILES)
         if form.is_valid():
@@ -28,5 +29,11 @@ def importar(request):
                     sexo=str(sh.row(rx)[5].value),
                 )
                 i=i+1
-
     return render(request, 'importing/importar.html')
+
+
+def listagem(request):
+    listagens = Planilha.objects.all().order_by('data', 'nome_pessoa', 'categoria', 'demanda')
+    context = {'listagens': listagens}
+    template = loader.get_template('importing/listagem.html')
+    return HttpResponse(template.render(context, request))

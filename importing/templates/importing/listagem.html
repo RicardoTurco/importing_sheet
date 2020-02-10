@@ -1,0 +1,39 @@
+{% extends "importing/base.html" %}
+{% load static %}
+
+{% block title %}..: PLANILHA - Listagem :..{% endblock %}
+
+{% block main %}
+
+    <div class="container">
+        <br>
+        <h1 align="center">Planilha Listagem</h1>
+        <br>
+
+        <table class="table table-dark">
+            <thead>
+                <tr>
+                    <th>Data</th><th>Pessoa</th><th>Demanda</th><th>Categoria</th>
+                </tr>
+            </thead>
+
+
+            <tbody>
+                {% for listagem in listagens %}
+                <tr>
+                    <td>{{ listagem.data }}</td>
+                    <td>{{ listagem.nome_pessoa }}</td>
+                    <td>{{ listagem.demanda }}</td>
+                    <td>{{ listagem.categoria }}</td>
+                    <td>
+                        <a class="btn btn-info" href="#">View</a>
+                        <a class="btn btn-danger" href="#">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+
+        </table>
+    </div>
+
+{% endblock %}
