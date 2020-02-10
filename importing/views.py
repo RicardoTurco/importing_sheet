@@ -1,7 +1,8 @@
 import xlrd
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.template import loader
+from django.urls import reverse
 
 from .forms import UpdateDetailsForm
 from .models import Planilha
@@ -43,4 +44,16 @@ def listagem_v(request, listagem_id=None):
     listagem = Planilha.objects.filter(id=listagem_id).first()
     context = {'listagem': listagem}
     template = loader.get_template('importing/listagem_v.html')
+    return HttpResponse(template.render(context, request))
+
+
+def listagem_d(request, listagem_id=None):
+    listagem = Planilha.objects.filter(id=listagem_id).first()
+
+    if request.method == 'POST':
+        Planilha.objects.filter(id=listagem_id).delete()
+        return HttpResponseRedirect(reverse('listagem'))
+
+    context = {'listagem': listagem}
+    template = loader.get_template('importing/listagem_d.html')
     return HttpResponse(template.render(context, request))

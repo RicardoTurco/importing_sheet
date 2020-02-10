@@ -1,0 +1,33 @@
+{% extends "importing/base.html" %}
+{% load static %}
+
+{% block title %}..: LISTAGEM - Delete :..{% endblock %}
+
+{% block main %}
+
+    <div class="container">
+        <form id="delete_listagem" method="POST" action="{% url 'listagem_d' listagem.id %}">
+            {% csrf_token %}
+
+            <br>
+            <p>
+                Realmente deseja excluir esse item da LISTAGEM ?<br><br>
+
+                Data: <strong>{{ listagem.data }}</strong><br>
+                Nome: <strong>{{ listagem.nome_pessoa }}</strong><br>
+                Demanda: <strong>{{ listagem.demanda }}</strong><br>
+                Categoria: <strong>{{ listagem.categoria }}</strong>
+            </p><br>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <a class="btn btn-primary" href="{% url 'listagem' %}"><< Index of Listagem</a>
+                </div>
+                <div class="col-md-6" style="text-align: right;">
+                    <button type="submit" class="btn btn-danger">Yes, delete it!</button>
+                </div>
+            <div>
+        </form>
+    </div>
+
+{% endblock %}

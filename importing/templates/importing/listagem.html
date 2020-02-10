@@ -27,7 +27,7 @@
                     <td>{{ listagem.categoria }}</td>
                     <td>
                         <a class="btn btn-info" href="{% url 'listagem_v' listagem.id %}">View</a>
-                        <a class="btn btn-danger" href="#">Delete</a>
+                        <a class="btn btn-danger" href="{% url 'listagem_d' listagem.id %}">Delete</a>
                     </td>
                 </tr>
                 {% endfor %}
