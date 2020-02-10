@@ -1,10 +1,10 @@
+import xlrd
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.template import loader
 
-import xlrd
-from .models import Planilha
 from .forms import UpdateDetailsForm
+from .models import Planilha
 
 
 def index(request):
@@ -36,4 +36,11 @@ def listagem(request):
     listagens = Planilha.objects.all().order_by('data', 'nome_pessoa', 'categoria', 'demanda')
     context = {'listagens': listagens}
     template = loader.get_template('importing/listagem.html')
+    return HttpResponse(template.render(context, request))
+
+
+def listagem_v(request, listagem_id=None):
+    listagem = Planilha.objects.filter(id=listagem_id).first()
+    context = {'listagem': listagem}
+    template = loader.get_template('importing/listagem_v.html')
     return HttpResponse(template.render(context, request))

@@ -26,7 +26,7 @@
                     <td>{{ listagem.demanda }}</td>
                     <td>{{ listagem.categoria }}</td>
                     <td>
-                        <a class="btn btn-info" href="#">View</a>
+                        <a class="btn btn-info" href="{% url 'listagem_v' listagem.id %}">View</a>
                         <a class="btn btn-danger" href="#">Delete</a>
                     </td>
                 </tr>
