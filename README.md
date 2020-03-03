@@ -38,3 +38,13 @@ D) Create tables in the database:
 
 - python manage.py makemigrations
 - python manage.py migrate
+
+
+E) Run project:
+
+- python manage.py runserver
+
+
+F) Access in your browser:
+
+- localhost:8000
