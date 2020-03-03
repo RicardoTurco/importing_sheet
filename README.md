@@ -40,11 +40,16 @@ D) Create tables in the database:
 - python manage.py migrate
 
 
-E) Run project:
+E) Create super user in Django:
+
+- python manage.py createsuperuser
+
+
+F) Run project:
 
 - python manage.py runserver
 
 
-F) Access in your browser:
+G) Access in your browser:
 
 - localhost:8000
